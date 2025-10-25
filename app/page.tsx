@@ -14,7 +14,7 @@ export default function Home() {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const progress = (scrollTop / docHeight) * 100;
-      
+
       setIsScrolled(scrollTop > 50);
       setScrollProgress(progress);
       setShowBackToTop(scrollTop > 300);
@@ -24,7 +24,7 @@ export default function Home() {
       scrollElements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
-        
+
         if (elementTop < window.innerHeight - elementVisible) {
           element.classList.add('visible');
         }
@@ -34,7 +34,7 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll);
     // Initial check for elements already in view
     handleScroll();
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -53,32 +53,29 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Header dengan Logo di Tengah */}
-      <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-black/95 backdrop-blur-md shadow-lg border-b border-gray-700' 
-          : 'bg-gradient-to-r from-black to-gray-900'
-      }`}>
+      <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-black/95 backdrop-blur-md shadow-lg border-b border-gray-700'
+        : 'bg-gradient-to-r from-black to-gray-900'
+        }`}>
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-center gap-x-8 h-20">
             {/* Left Navigation */}
             <div className="hidden md:flex items-center space-x-4">
               <button
                 onClick={() => scrollToSection('home')}
-                className={`font-medium transition-all duration-300 hover:scale-105 cursor-pointer ${
-                  isScrolled 
-                    ? 'text-white hover:text-yellow-400' 
-                    : 'text-white hover:text-yellow-400'
-                }`}
+                className={`font-medium transition-all duration-300 hover:scale-105 cursor-pointer ${isScrolled
+                  ? 'text-white hover:text-yellow-400'
+                  : 'text-white hover:text-yellow-400'
+                  }`}
               >
                 Beranda
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className={`font-medium transition-all duration-300 hover:scale-105 cursor-pointer ${
-                  isScrolled 
-                    ? 'text-white hover:text-yellow-400' 
-                    : 'text-white hover:text-yellow-400'
-                }`}
+                className={`font-medium transition-all duration-300 hover:scale-105 cursor-pointer ${isScrolled
+                  ? 'text-white hover:text-yellow-400'
+                  : 'text-white hover:text-yellow-400'
+                  }`}
               >
                 Tentang
               </button>
@@ -86,9 +83,8 @@ export default function Home() {
 
             {/* Center Logo */}
             <div className="flex items-center cursor-pointer mx-4" onClick={() => scrollToSection('home')}>
-              <div className={`w-16 h-16 rounded-full p-2 transition-all duration-300 hover:scale-110 ${
-                isScrolled ? 'bg-yellow-400/20' : 'bg-white/10'
-              }`}>
+              <div className={`w-16 h-16 rounded-full p-2 transition-all duration-300 hover:scale-110 ${isScrolled ? 'bg-yellow-400/20' : 'bg-white/10'
+                }`}>
                 <Image
                   src="/img/logo-astria.jpg"
                   alt="Astria Group Logo"
@@ -103,21 +99,19 @@ export default function Home() {
             <div className="hidden md:flex items-center space-x-4">
               <button
                 onClick={() => scrollToSection('business-units')}
-                className={`font-medium transition-all duration-300 hover:scale-105 cursor-pointer ${
-                  isScrolled 
-                    ? 'text-white hover:text-yellow-400' 
-                    : 'text-white hover:text-yellow-400'
-                }`}
+                className={`font-medium transition-all duration-300 hover:scale-105 cursor-pointer ${isScrolled
+                  ? 'text-white hover:text-yellow-400'
+                  : 'text-white hover:text-yellow-400'
+                  }`}
               >
                 Unit Bisnis
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className={`font-medium transition-all duration-300 hover:scale-105 cursor-pointer ${
-                  isScrolled 
-                    ? 'text-white hover:text-yellow-400' 
-                    : 'text-white hover:text-yellow-400'
-                }`}
+                className={`font-medium transition-all duration-300 hover:scale-105 cursor-pointer ${isScrolled
+                  ? 'text-white hover:text-yellow-400'
+                  : 'text-white hover:text-yellow-400'
+                  }`}
               >
                 Kontak
               </button>
@@ -125,17 +119,16 @@ export default function Home() {
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <button 
+              <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`p-2 rounded-lg transition-colors cursor-pointer ${
-                  isScrolled ? 'text-white hover:bg-yellow-400/20' : 'text-white hover:bg-white/10'
-                }`}
+                className={`p-2 rounded-lg transition-colors cursor-pointer ${isScrolled ? 'text-white hover:bg-yellow-400/20' : 'text-white hover:bg-white/10'
+                  }`}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
                     d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
                   />
                 </svg>
@@ -182,24 +175,24 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="container mx-auto px-6 text-center relative z-10">
           <h2 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in scroll-fade">
-            Membangun 
+            Membangun
             <span className="block bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
               Ekosistem Bisnis
             </span>
             Terintegrasi
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto opacity-0 animate-fade-in-delayed scroll-fade">
-            Holding company yang berkomitmen menciptakan nilai berkelanjutan melalui pengembangan 
+            Holding company yang berkomitmen menciptakan nilai berkelanjutan melalui pengembangan
             portofolio multibisnis yang inovatif dan kompetitif secara global.
           </p>
           <div className="space-x-4 opacity-0 animate-fade-in-delayed-2 scroll-fade">
-            <button 
+            <button
               onClick={() => scrollToSection('about')}
               className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer"
             >
               Pelajari Lebih Lanjut
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('business-units')}
               className="border-2 border-yellow-400 hover:bg-yellow-400 hover:text-black text-yellow-400 px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 cursor-pointer"
             >
@@ -216,17 +209,17 @@ export default function Home() {
             <h3 className="text-4xl font-bold text-white mb-4">Tentang Kami</h3>
             <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="bg-gray-800 border border-gray-700 p-8 rounded-xl shadow-lg mb-8 scroll-fade">
               <p className="text-lg text-gray-300 leading-relaxed">
-                <span className="text-yellow-400 font-semibold">PT Astria Sukses Internasional (Astria Group)</span> merupakan hasil transformasi dari PT Agra Sinergi Tria, 
-                sebuah holding company yang berkomitmen untuk membangun ekosistem bisnis yang terintegrasi. Nama &ldquo;Astria&rdquo; merupakan 
-                akronim dari Agra Sinergi Tria. Selain itu, nama &ldquo;Astria&rdquo; juga berasal dari bahasa Yunani yang berarti &ldquo;bintang&rdquo;, 
+                <span className="text-yellow-400 font-semibold">PT Astria Sukses Internasional (Astria Group)</span> merupakan hasil transformasi dari PT Agra Sinergi Tria,
+                sebuah holding company yang berkomitmen untuk membangun ekosistem bisnis yang terintegrasi. Nama &ldquo;Astria&rdquo; merupakan
+                akronim dari Agra Sinergi Tria. Selain itu, nama &ldquo;Astria&rdquo; juga berasal dari bahasa Yunani yang berarti &ldquo;bintang&rdquo;,
                 yang merefleksikan kesinambungan nilai, filosofi, dan semangat pendirian perusahaan.
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-gray-800 border border-gray-700 p-6 rounded-xl shadow-lg text-center hover:bg-gray-750 transition-all duration-300 scroll-fade-left">
                 <div className="text-4xl mb-4">
@@ -235,7 +228,7 @@ export default function Home() {
                 <h4 className="font-semibold text-xl mb-3 text-yellow-400">Fokus Berkelanjutan</h4>
                 <p className="text-gray-300">Penciptaan nilai berkelanjutan melalui pengembangan portofolio multibisnis yang strategis.</p>
               </div>
-              
+
               <div className="bg-gray-800 border border-gray-700 p-6 rounded-xl shadow-lg text-center hover:bg-gray-750 transition-all duration-300 scroll-fade">
                 <div className="text-4xl mb-4">
                   <i className="ri-links-line text-yellow-400"></i>
@@ -243,7 +236,7 @@ export default function Home() {
                 <h4 className="font-semibold text-xl mb-3 text-yellow-400">Strategi Integrasi</h4>
                 <p className="text-gray-300">Membangun sinergi antarunit usaha untuk meningkatkan efisiensi, inovasi, dan daya saing.</p>
               </div>
-              
+
               <div className="bg-gray-800 border border-gray-700 p-6 rounded-xl shadow-lg text-center hover:bg-gray-750 transition-all duration-300 scroll-fade-right">
                 <div className="text-4xl mb-4">
                   <i className="ri-global-line text-yellow-400"></i>
@@ -266,7 +259,7 @@ export default function Home() {
               Tiga pilar fundamental yang menjadi landasan operasional dan komitmen kami untuk kemajuan bangsa dan negara
             </p>
           </div>
-          
+
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Dharma 1 */}
@@ -279,8 +272,8 @@ export default function Home() {
                   <p className="text-yellow-400 font-medium text-sm mt-2">untuk Keberlanjutan Bangsa dan Negara</p>
                 </div>
                 <p className="text-gray-300 text-sm leading-relaxed text-center">
-                  Kami berdedikasi untuk melindungi dan memanfaatkan sumber daya alam Indonesia secara bertanggung jawab. 
-                  Kami memastikan operasional di bidang energi dan pertambangan tidak hanya menguntungkan secara ekonomi, 
+                  Kami berdedikasi untuk melindungi dan memanfaatkan sumber daya alam Indonesia secara bertanggung jawab.
+                  Kami memastikan operasional di bidang energi dan pertambangan tidak hanya menguntungkan secara ekonomi,
                   tetapi juga berkelanjutan secara lingkungan, demi kesejahteraan generasi mendatang.
                 </p>
               </div>
@@ -295,8 +288,8 @@ export default function Home() {
                   <p className="text-yellow-400 font-medium text-sm mt-2">untuk Kemajuan Bangsa dan Negara</p>
                 </div>
                 <p className="text-gray-300 text-sm leading-relaxed text-center">
-                  Kami berinvestasi pada potensi tak terbatas individu. Melalui berbagai sektor kami menyediakan produk dan 
-                  layanan yang mencerdaskan, menyehatkan, dan memberdayakan masyarakat. Kami yakin bahwa mengembangkan potensi 
+                  Kami berinvestasi pada potensi tak terbatas individu. Melalui berbagai sektor kami menyediakan produk dan
+                  layanan yang mencerdaskan, menyehatkan, dan memberdayakan masyarakat. Kami yakin bahwa mengembangkan potensi
                   manusia adalah fondasi utama bagi kemajuan bangsa.
                 </p>
               </div>
@@ -311,8 +304,8 @@ export default function Home() {
                   <p className="text-yellow-400 font-medium text-sm mt-2">untuk Kesejahteraan Bangsa dan Negara</p>
                 </div>
                 <p className="text-gray-300 text-sm leading-relaxed text-center">
-                  Kami menggunakan keahlian finansial kami untuk menciptakan stabilitas dan kemakmuran. Kami berfokus pada 
-                  investasi yang cerdas dan strategis, tidak hanya untuk keuntungan perusahaan, tetapi juga untuk menggerakkan 
+                  Kami menggunakan keahlian finansial kami untuk menciptakan stabilitas dan kemakmuran. Kami berfokus pada
+                  investasi yang cerdas dan strategis, tidak hanya untuk keuntungan perusahaan, tetapi juga untuk menggerakkan
                   roda ekonomi secara adil, menciptakan lapangan kerja, dan mendukung inisiatif sosial yang membawa manfaat bagi semua.
                 </p>
               </div>
@@ -323,7 +316,7 @@ export default function Home() {
               <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-400/30 rounded-2xl p-8 max-w-4xl mx-auto">
                 <h5 className="text-2xl font-bold text-yellow-400 mb-4">Komitmen Berkelanjutan</h5>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  Tri Dharma Astria bukan sekadar filosofi, tetapi panduan nyata dalam setiap keputusan bisnis kami. 
+                  Tri Dharma Astria bukan sekadar filosofi, tetapi panduan nyata dalam setiap keputusan bisnis kami.
                   Kami berkomitmen untuk menciptakan nilai yang berkelanjutan bagi stakeholder, masyarakat, dan bangsa Indonesia.
                 </p>
               </div>
@@ -339,77 +332,45 @@ export default function Home() {
             <h3 className="text-4xl font-bold text-white mb-4">Unit Bisnis Kami</h3>
             <div className="w-20 h-1 bg-yellow-400 mx-auto mb-6"></div>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Portofolio multibisnis yang terintegrasi untuk menciptakan ekosistem yang saling mendukung dan berkelanjutan.
+              Kami memiliki enam unit bisnis yang saling terintegrasi, berfokus pada berbagai sektor strategis untuk menciptakan ekosistem usaha yang inovatif, adaptif, dan berkelanjutan.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-6">
+            {/* 1. Consumers Goods & Agribisnis */}
             <div className="flip-card scroll-fade">
               <div className="flip-card-inner">
                 <div className="flip-card-front">
                   <div className="w-16 h-16 mb-4 mx-auto">
                     <Image
                       src="/img/oravita.jpg"
-                      alt="Oravita Logo"
+                      alt="Oravita Global"
                       width={64}
                       height={64}
                       className="w-full h-full object-contain rounded-lg"
                     />
                   </div>
-                  <h4 className="text-xl font-bold text-yellow-400 mb-2">Consumer Goods</h4>
+                  <h4 className="text-xl font-bold text-yellow-400 mb-2">Consumers Goods & Agribisnis</h4>
                   <p className="text-sm text-yellow-300 font-medium">Oravita Global</p>
                 </div>
                 <div className="flip-card-back">
-                  <h4 className="text-xl font-bold mb-4">Consumer Goods</h4>
-                  <h5 className="text-lg font-semibold mb-4">Oravita Global</h5>
+                  <h4 className="text-xl font-bold mb-2">Oravita Global</h4>
                   <p className="text-sm leading-relaxed">
-                    Divisi consumer goods yang fokus pada pengembangan produk makanan, minuman, kesehatan, dan kebutuhan rumah tangga. 
-                    Menghadirkan merek berkualitas seperti Sarjabana Chips, Bitezy Chips, Exmind Coffee, dan Emping Cisono dengan 
-                    mengedepankan inovasi rasa, kualitas bahan baku, serta kepuasan pelanggan untuk gaya hidup sehat dan berkelanjutan.
+                    Berfokus pada pengembangan dan distribusi produk kebutuhan harian seperti makanan, minuman, serta hasil agribisnis yang berorientasi pada kualitas dan keberlanjutan.
+                    Divisi ini berkomitmen untuk memperkuat ketahanan pangan nasional melalui inovasi produk lokal yang kompetitif di pasar domestik dan internasional.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="flip-card scroll-fade">
-              <div className="flip-card-inner">
-                <div className="flip-card-front">
-                  <div className="w-16 h-16 mb-4 mx-auto">
-                    <Image
-                      src="/img/oravita-agro.png"
-                      alt="Oravita Agro Logo"
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-contain rounded-lg"
-                    />
-                  </div>
-                  <h4 className="text-xl font-bold text-yellow-400 mb-2">Agribisnis</h4>
-                  <p className="text-sm text-yellow-300 font-medium">Oravita Agro</p>
-                </div>
-                <div className="flip-card-back">
-                  <h4 className="text-xl font-bold mb-4">Agribisnis</h4>
-                  <h5 className="text-lg font-semibold mb-4">Oravita Agro</h5>
-                  <div className="mb-3">
-                    <span className="bg-yellow-500 text-black text-xs px-2 py-1 rounded-full font-semibold">
-                      Coming Soon
-                    </span>
-                  </div>
-                  <p className="text-sm leading-relaxed">
-                    Segera hadir dengan fokus pada pengembangan sektor perikanan dan agritech. Akan menghadirkan inovasi 
-                    dalam budidaya ikan hias, ikan konsumsi, serta teknologi pertanian modern. Divisi ini akan membangun 
-                    ekosistem agribisnis terpadu untuk mendukung ketahanan pangan dan pemberdayaan masyarakat pesisir.
-                  </p>
-                </div>
-              </div>
-            </div>
-
+            {/* 2. Distributor & Supplier */}
             <div className="flip-card scroll-fade">
               <div className="flip-card-inner">
                 <div className="flip-card-front">
                   <div className="w-16 h-16 mb-4 mx-auto">
                     <Image
                       src="/img/oralink.jpg"
-                      alt="Oralink Logo"
+                      alt="Oralink Global"
                       width={64}
                       height={64}
                       className="w-full h-full object-contain rounded-lg"
@@ -419,24 +380,24 @@ export default function Home() {
                   <p className="text-sm text-yellow-300 font-medium">Oralink Global</p>
                 </div>
                 <div className="flip-card-back">
-                  <h4 className="text-xl font-bold mb-4">Distributor & Supplier</h4>
-                  <h5 className="text-lg font-semibold mb-4">Oralink Global</h5>
+                  <h4 className="text-xl font-bold mb-2">Oralink Global</h4>
                   <p className="text-sm leading-relaxed">
-                    Berperan sebagai jaringan distribusi dan pemasok strategis bagi seluruh unit bisnis dan mitra eksternal. 
-                    Mengelola rantai pasok dengan sistem logistik terintegrasi untuk memastikan produk sampai ke konsumen secara 
-                    cepat, efisien, dan tepat waktu dengan dukungan jaringan luas serta sistem manajemen persediaan digital.
+                    Memiliki fokus utama dalam mendukung rantai pasok antar divisi dan mitra eksternal.
+                    Divisi ini memastikan setiap produk dan layanan dapat terdistribusi secara efisien, cepat, serta sesuai standar kualitas.
+                    Dengan sistem logistik modern, Oralink Global menjadi tulang punggung konektivitas antar lini bisnis.
                   </p>
                 </div>
               </div>
             </div>
 
+            {/* 3. Consulting Management */}
             <div className="flip-card scroll-fade">
               <div className="flip-card-inner">
                 <div className="flip-card-front">
                   <div className="w-16 h-16 mb-4 mx-auto">
                     <Image
                       src="/img/logo-dmulti-pro.jpg"
-                      alt="D'Multi Pro Logo"
+                      alt="D'Multi Pro"
                       width={64}
                       height={64}
                       className="w-full h-full object-contain rounded-lg"
@@ -446,24 +407,23 @@ export default function Home() {
                   <p className="text-sm text-yellow-300 font-medium">D&apos;Multi Pro</p>
                 </div>
                 <div className="flip-card-back">
-                  <h4 className="text-xl font-bold mb-4">Consulting Management</h4>
-                  <h5 className="text-lg font-semibold mb-4">D&apos;Multi Pro</h5>
+                  <h4 className="text-xl font-bold mb-2">D&apos;Multi Pro</h4>
                   <p className="text-sm leading-relaxed">
-                    Menawarkan solusi terpadu untuk data, desain, bahasa, dan bisnis. Membantu individu, akademisi, dan 
-                    perusahaan dalam mengoptimalkan potensi melalui layanan konsultasi, pendampingan, serta pelatihan yang 
-                    komprehensif dan terpercaya untuk meningkatkan daya saing dan kinerja organisasi.
+                    Menyediakan layanan konsultasi bisnis, strategi, manajemen, dan data analytics untuk mendukung pengambilan keputusan yang tepat.
+                    Divisi ini membantu perusahaan klien dalam membangun efisiensi operasional, penguatan merek, serta penerapan sistem manajemen modern yang berbasis data.
                   </p>
                 </div>
               </div>
             </div>
 
+            {/* 4. Media & Digital */}
             <div className="flip-card scroll-fade">
               <div className="flip-card-inner">
                 <div className="flip-card-front">
                   <div className="w-16 h-16 mb-4 mx-auto">
                     <Image
                       src="/img/neulink.png"
-                      alt="Neulink Logo"
+                      alt="Neulink News"
                       width={64}
                       height={64}
                       className="w-full h-full object-contain rounded-lg"
@@ -473,125 +433,62 @@ export default function Home() {
                   <p className="text-sm text-yellow-300 font-medium">Neulink News</p>
                 </div>
                 <div className="flip-card-back">
-                  <h4 className="text-xl font-bold mb-4">Media & Digital</h4>
-                  <h5 className="text-lg font-semibold mb-4">Neulink News</h5>
+                  <h4 className="text-xl font-bold mb-2">Neulink News</h4>
                   <p className="text-sm leading-relaxed">
-                    Berfokus pada media digital dan komunikasi publik. Menyajikan berita, analisis, dan konten kreatif 
-                    seputar politik, ekonomi, bisnis, hukum, dan isu sosial. Dengan gaya jurnalistik modern dan jangkauan 
-                    multiplatform, menghadirkan informasi yang relevan, inspiratif, dan berimbang untuk pembaca muda dan profesional.
+                    Mengelola kanal informasi dan media digital yang berfokus pada publikasi, komunikasi strategis, dan pengelolaan konten kreatif.
+                    Neulink News berperan sebagai jembatan informasi antara masyarakat dan entitas bisnis dengan menghadirkan konten informatif, edukatif, dan inspiratif.
                   </p>
                 </div>
               </div>
             </div>
 
+            {/* 5. Creative & Event */}
             <div className="flip-card scroll-fade">
               <div className="flip-card-inner">
                 <div className="flip-card-front">
                   <div className="w-16 h-16 mb-4 mx-auto">
                     <Image
                       src="/img/Logo FDX Management.jpg"
-                      alt="FDX Management Logo"
+                      alt="FDX Management"
                       width={64}
                       height={64}
                       className="w-full h-full object-contain rounded-lg"
                     />
                   </div>
-                  <h4 className="text-xl font-bold text-yellow-400 mb-2">Entertainment & Digital Marketing</h4>
+                  <h4 className="text-xl font-bold text-yellow-400 mb-2">Creative & Event</h4>
                   <p className="text-sm text-yellow-300 font-medium">FDX Management</p>
                 </div>
                 <div className="flip-card-back">
-                  <h4 className="text-xl font-bold mb-4">Entertainment & Digital Marketing</h4>
-                  <h5 className="text-lg font-semibold mb-4">FDX Management</h5>
+                  <h4 className="text-xl font-bold mb-2">FDX Management</h4>
                   <p className="text-sm leading-relaxed">
-                    Berfokus pada KOL Management, Influencer Marketing, dan Digital Campaign. Membantu brand, komunitas, 
-                    dan lembaga dalam merancang serta mengeksekusi strategi promosi yang efektif, terukur, dan relevan dengan 
-                    audiens target, guna memperkuat koneksi antara merek dan masyarakat melalui kreativitas dan riset berbasis data.
+                    Berfokus pada penyelenggaraan acara kreatif, digital campaign, dan kolaborasi dengan berbagai talenta.
+                    Divisi ini menggabungkan kreativitas, teknologi, dan manajemen proyek untuk menghadirkan pengalaman visual dan event yang profesional, berkesan, serta bernilai tinggi.
                   </p>
                 </div>
               </div>
             </div>
 
+            {/* 6. Web Developer & Computer */}
             <div className="flip-card scroll-fade">
               <div className="flip-card-inner">
                 <div className="flip-card-front">
                   <div className="w-16 h-16 mb-4 mx-auto">
                     <Image
-                      src="/img/neulink-management.jpg"
-                      alt="Neulink Management Logo"
+                      src="/img/oqline-technology.jpg"
+                      alt="Oqline Technology"
                       width={64}
                       height={64}
                       className="w-full h-full object-contain rounded-lg"
                     />
                   </div>
-                  <h4 className="text-xl font-bold text-yellow-400 mb-2">Wedding Organizer</h4>
-                  <p className="text-sm text-yellow-300 font-medium">Neulink Management</p>
+                  <h4 className="text-xl font-bold text-yellow-400 mb-2">Web Developer & Computer</h4>
+                  <p className="text-sm text-yellow-300 font-medium">Oqline Technology</p>
                 </div>
                 <div className="flip-card-back">
-                  <h4 className="text-xl font-bold mb-4">Wedding Organizer</h4>
-                  <h5 className="text-lg font-semibold mb-4">Neulink Management</h5>
+                  <h4 className="text-xl font-bold mb-2">Oqline Technology</h4>
                   <p className="text-sm leading-relaxed">
-                    Bergerak di bidang wedding organizer profesional. Menghadirkan konsep pernikahan yang elegan, personal, 
-                    dan berkesan dengan perencanaan detail, koordinasi menyeluruh, serta tim berpengalaman. Setiap acara dirancang 
-                    untuk menciptakan momen istimewa yang tak terlupakan bagi setiap pasangan.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flip-card scroll-fade">
-              <div className="flip-card-inner">
-                <div className="flip-card-front">
-                  <div className="w-16 h-16 mb-4 mx-auto">
-                    <Image
-                      src="/img/oqline-computer.jpg"
-                      alt="Oqline Computer Logo"
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-contain rounded-lg"
-                    />
-                  </div>
-                  <h4 className="text-xl font-bold text-yellow-400 mb-2">Computer-Hardware</h4>
-                  <p className="text-sm text-yellow-300 font-medium">Oqline Computer</p>
-                </div>
-                <div className="flip-card-back">
-                  <h4 className="text-xl font-bold mb-4">Computer-Hardware</h4>
-                  <h5 className="text-lg font-semibold mb-4">Oqline Computer</h5>
-                  <p className="text-sm leading-relaxed">
-                    Bergerak di bidang perdagangan komputer dan perangkat keras (hardware). Menyediakan berbagai produk teknologi 
-                    seperti laptop, PC rakitan, komponen komputer, periferal, dan aksesoris IT berkualitas dengan harga kompetitif 
-                    untuk memenuhi kebutuhan teknologi personal maupun bisnis.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flip-card scroll-fade">
-              <div className="flip-card-inner">
-                <div className="flip-card-front">
-                  <div className="w-16 h-16 mb-4 mx-auto">
-                    <Image
-                      src="/img/oqline-soft.jpg"
-                      alt="Oqline Soft Logo"
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-contain rounded-lg"
-                    />
-                  </div>
-                  <h4 className="text-xl font-bold text-yellow-400 mb-2">Web Developer</h4>
-                  <p className="text-sm text-yellow-300 font-medium">Oqline Soft</p>
-                </div>
-                <div className="flip-card-back">
-                  <h4 className="text-xl font-bold mb-4">Web Developer</h4>
-                  <h5 className="text-lg font-semibold mb-4">Oqline Soft</h5>
-                  <div className="mb-3">
-                    <span className="bg-yellow-500 text-black text-xs px-2 py-1 rounded-full font-semibold">
-                      Coming Soon
-                    </span>
-                  </div>
-                  <p className="text-sm leading-relaxed">
-                    Segera hadir sebagai divisi pengembangan website dan solusi digital terdepan. Akan menyediakan layanan 
-                    pembuatan situs perusahaan, e-commerce, aplikasi web, dan sistem manajemen konten yang modern. 
-                    Tim developer berpengalaman siap menghadirkan solusi digital inovatif untuk transformasi bisnis Anda.
+                    Mengembangkan solusi digital berbasis web dan perangkat komputer dengan pendekatan modern dan efisien.
+                    Divisi ini menyediakan layanan pembuatan website, sistem informasi, hingga perdagangan perangkat keras untuk menunjang kebutuhan bisnis di era digital.
                   </p>
                 </div>
               </div>
@@ -610,7 +507,7 @@ export default function Home() {
               Mari bergabung dalam membangun masa depan yang lebih baik bersama Astria Group
             </p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div className="text-center scroll-fade-left">
@@ -622,7 +519,7 @@ export default function Home() {
                   astriainternasional@gmail.com
                 </a>
               </div>
-              
+
               <div className="text-center scroll-fade">
                 <div className="text-4xl mb-4">
                   <i className="ri-whatsapp-line text-yellow-400"></i>
@@ -632,20 +529,20 @@ export default function Home() {
                   +62 896-5243-5067
                 </a>
               </div>
-              
+
               <div className="text-center scroll-fade-right">
                 <div className="text-4xl mb-4">
                   <i className="ri-map-pin-line text-yellow-400"></i>
                 </div>
                 <h4 className="font-semibold text-xl mb-2 text-yellow-400">Alamat</h4>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Gedung Puskopal Lt. 2<br/>
-                  Komplek TNI AL Jl. Tabah Raya No.19<br/>
+                  Gedung Puskopal Lt. 2<br />
+                  Komplek TNI AL Jl. Tabah Raya No.19<br />
                   Kelapa Gading, Jakarta Utara
                 </p>
               </div>
             </div>
-            
+
             <div className="text-center scroll-fade">
               <blockquote className="text-xl italic text-gray-300">
                 &ldquo;Membangun masa depan melalui sinergi, inovasi, dan komitmen terhadap excellence&rdquo;
@@ -676,7 +573,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-              Holding company yang berkomitmen membangun ekosistem bisnis terintegrasi 
+              Holding company yang berkomitmen membangun ekosistem bisnis terintegrasi
               untuk masa depan yang berkelanjutan dan kompetitif secara global.
             </p>
           </div>
@@ -687,26 +584,26 @@ export default function Home() {
             <div className="scroll-fade-left">
               <h4 className="text-yellow-400 font-bold text-lg mb-4">Tentang Perusahaan</h4>
               <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                PT Astria Sukses Internasional adalah holding company yang mengembangkan 
+                PT Astria Sukses Internasional adalah holding company yang mengembangkan
                 portofolio multibisnis terintegrasi dengan fokus pada inovasi dan keunggulan operasional.
               </p>
               <div className="flex space-x-4">
                 {/* LinkedIn */}
                 <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors transform hover:scale-110" title="LinkedIn">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                   </svg>
                 </a>
                 {/* Instagram */}
                 <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors transform hover:scale-110" title="Instagram">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                   </svg>
                 </a>
                 {/* TikTok */}
                 <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors transform hover:scale-110" title="TikTok">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
                   </svg>
                 </a>
               </div>
@@ -751,9 +648,9 @@ export default function Home() {
                   <div>
                     <p className="text-white font-medium text-sm">Alamat Kantor Pusat</p>
                     <p className="text-gray-400 text-sm">
-                      Gedung Puskopal Lantai 2<br/>
-                      Komplek TNI AL Jl. Tabah Raya No.19<br/>
-                      Kodamar Kelapa Gading<br/>
+                      Gedung Puskopal Lantai 2<br />
+                      Komplek TNI AL Jl. Tabah Raya No.19<br />
+                      Kodamar Kelapa Gading<br />
                       Jakarta Utara, DKI Jakarta
                     </p>
                   </div>
@@ -804,7 +701,7 @@ export default function Home() {
                   &copy; 2025 PT Astria Sukses Internasional (Astria Group)
                 </p>
                 <p className="text-gray-400 text-xs">
-                  Semua Hak Dilindungi. Tidak ada bagian dari website ini yang boleh direproduksi, 
+                  Semua Hak Dilindungi. Tidak ada bagian dari website ini yang boleh direproduksi,
                   didistribusikan, atau ditransmisikan dalam bentuk atau cara apapun tanpa izin tertulis sebelumnya.
                 </p>
               </div>
@@ -817,29 +714,29 @@ export default function Home() {
                     <i className="ri-heart-fill text-red-400 animate-pulse"></i>
                     <span>by</span>
                   </div>
-                  
+
                   <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 px-3 py-1 rounded-full">
                     <div className="w-6 h-6 bg-white rounded-full p-1 flex items-center justify-center">
                       <Image
-                        src="/img/oqline-soft.jpg"
+                        src="/img/oqline-technology.jpg"
                         alt="Oqline Soft Logo"
                         width={20}
                         height={20}
                         className="w-full h-full object-contain rounded-full"
                       />
                     </div>
-                    <span className="text-white font-semibold">Oqline Soft</span>
+                    <span className="text-white font-semibold">Oqline Technology</span>
                   </div>
-                  
+
                   <div className="text-gray-500">
                     <span>•</span>
                     <span className="ml-2">Professional Web Development Solutions</span>
                   </div>
                 </div>
-                
+
                 <div className="mt-3 text-center">
                   <p className="text-gray-500 text-xs">
-                    Untuk layanan pengembangan website profesional, hubungi: 
+                    Untuk layanan pengembangan website profesional, hubungi:
                     <a href="mailto:astriainternasional@gmail.com" className="text-yellow-400 hover:text-yellow-300 ml-1 font-medium">
                       Oqline Soft
                     </a>
@@ -853,7 +750,7 @@ export default function Home() {
 
       {/* Scroll Progress Bar */}
       <div className="fixed top-20 left-0 w-full h-1 bg-gray-800 z-40">
-        <div 
+        <div
           className="h-full bg-gradient-to-r from-yellow-400 to-orange-500 transition-all duration-300"
           style={{ width: `${scrollProgress}%` }}
         ></div>
